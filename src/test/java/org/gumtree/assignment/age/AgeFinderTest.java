@@ -33,7 +33,7 @@ public class AgeFinderTest {
         AgeFinder ageFinder = new AgeFinder();
         Integer daysOlder = ageFinder.howManyDaysOlder(addressBooks, "Sarah Stone", "Bill McKnight");
 
-        System.out.println(daysOlder);
+        Assert.assertEquals(daysOlder.intValue(),1284);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class AgeFinderTest {
         AgeFinder ageFinder = new AgeFinder();
         Integer daysOlder = ageFinder.howManyDaysOlder(addressBooks, "Bill McKnight", "Paul Robinson");
 
-        System.out.println(daysOlder);
+        Assert.assertEquals(daysOlder.intValue(),2862);
     }
 
     @Test(expected = DetailsNotFoundException.class)
@@ -51,9 +51,7 @@ public class AgeFinderTest {
 
         List<AddressBook> addressBooks = addressBookReader.readAddress();
         AgeFinder ageFinder = new AgeFinder();
-        Integer daysOlder = ageFinder.howManyDaysOlder(addressBooks, null, null);
-
-        System.out.println(daysOlder);
+         ageFinder.howManyDaysOlder(addressBooks, null, null);
     }
 
 }
