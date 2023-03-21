@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -33,8 +35,10 @@ public final class AddressBookReader {
     }
 
     private static LocalDate getDateOfBirth(String dob) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        return LocalDate.parse(dob.trim(), dateTimeFormatter);
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .appendPattern("dd/MM/")
+                .appendValueReduced(ChronoField.YEAR, 2, 2, 1900).toFormatter();
+        return LocalDate.parse(dob.trim(), formatter);
     }
 
     private static Gender getGenderEnum(String gender) {
