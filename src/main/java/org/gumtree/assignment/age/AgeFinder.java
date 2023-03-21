@@ -24,23 +24,20 @@ public final class AgeFinder {
         if (CollectionUtils.isEmpty(addressBooks)) {
             throw new DetailsNotFoundException(" addressBooks should not be empty ");
         }
-
-        Integer ageFinder = ageDiff(addressBooks, nameOne, nameTwo);
-        if (ageFinder > -1) return ageFinder;
-
-        throw new DetailsNotFoundException(" Details not found for given input name 1: " + nameOne + " input name 2: " + nameTwo);
+        return ageDiff(addressBooks, nameOne, nameTwo);
     }
 
-    private Integer ageDiff(List<AddressBook> addressBooks, String nameOne, String nameTwo) {
+    private Integer ageDiff(List<AddressBook> addressBooks, String nameOne, String nameTwo) throws DetailsNotFoundException {
         PersonFinder personFinder = new PersonFinder();
         Optional<AddressBook> firstAddress = personFinder.findPersonByName(addressBooks, nameOne);
         Optional<AddressBook> secondAddress = personFinder.findPersonByName(addressBooks, nameTwo);
 
         if (firstAddress.isPresent() && secondAddress.isPresent()) {
             AgeFinder ageFinder = new AgeFinder();
-            return Math.abs(ageFinder.calculateDays(firstAddress.get(), secondAddress.get()));
+            return ageFinder.calculateDays(firstAddress.get(), secondAddress.get());
         }
-        return -1;
+        throw new DetailsNotFoundException(" Details not found for given input name 1: " + nameOne + " input name 2: " + nameTwo);
+
     }
 
     private Integer calculateDays(AddressBook addressBookOne, AddressBook addressBookTwo) {

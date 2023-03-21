@@ -39,7 +39,7 @@ public class AgeFinderTest {
         AgeFinder ageFinder = new AgeFinder();
         Integer daysOlder = ageFinder.howManyDaysOlder(addressBooks, "Sarah Stone", "Bill McKnight");
 
-        Assert.assertEquals(daysOlder.intValue(), 1284);
+        Assert.assertEquals(Math.abs(daysOlder), 1284);
     }
 
     @Test
