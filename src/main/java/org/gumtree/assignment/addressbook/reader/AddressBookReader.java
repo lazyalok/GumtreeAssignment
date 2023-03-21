@@ -1,7 +1,9 @@
 package org.gumtree.assignment.addressbook.reader;
 
+import org.apache.commons.lang3.StringUtils;
 import org.gumtree.assignment.addressbook.AddressBook;
 import org.gumtree.assignment.age.DateOfBirth;
+import org.gumtree.assignment.exception.DetailsNotFoundException;
 import org.gumtree.assignment.gender.Gender;
 import org.gumtree.assignment.name.PersonName;
 
@@ -22,7 +24,11 @@ public final class AddressBookReader {
     private static final String DATE_FORMAT = "dd/MM/yy";
     private String fileName;
 
-    public AddressBookReader(String fileName) {
+    public AddressBookReader(String fileName) throws DetailsNotFoundException {
+
+        if(StringUtils.isEmpty(fileName)){
+            throw new DetailsNotFoundException("File name must not be empty");
+        }
         this.fileName = fileName;
     }
 

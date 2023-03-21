@@ -23,7 +23,7 @@ public class Main {
         howManyDaysOlderBillThanPaul(addressBooks);
     }
 
-    private static void howManyMalesInTheAddressBook(List<AddressBook> addressBooks) {
+    private static void howManyMalesInTheAddressBook(List<AddressBook> addressBooks) throws DetailsNotFoundException {
         GenderFinder finder = new GenderFinder();
         List<AddressBook> maleGenders = finder.findMaleGenders(addressBooks);
         System.out.println("There are " + maleGenders.size() + " male gender in given list");
