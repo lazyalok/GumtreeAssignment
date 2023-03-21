@@ -1,8 +1,8 @@
-package org.gumtree.assignment.addressbook.age;
+package org.gumtree.assignment.age;
 
 import java.time.LocalDate;
 
-public final class DateOfBirth{
+public final class DateOfBirth {
     private final LocalDate dob;
 
     public DateOfBirth(LocalDate dob) {

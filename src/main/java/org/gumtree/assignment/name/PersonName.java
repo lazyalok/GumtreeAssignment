@@ -1,4 +1,4 @@
-package org.gumtree.assignment.addressbook.name;
+package org.gumtree.assignment.name;
 
 import java.util.Objects;
 
