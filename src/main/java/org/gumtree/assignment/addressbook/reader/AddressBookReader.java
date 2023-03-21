@@ -21,18 +21,18 @@ import java.util.stream.Stream;
 
 public final class AddressBookReader {
 
-    private static final String DATE_FORMAT = "dd/MM/yy";
+    private static final String DATE_FORMAT = "dd/MM/";
     private String fileName;
 
     public AddressBookReader(String fileName) throws DetailsNotFoundException {
 
-        if(StringUtils.isEmpty(fileName)){
+        if (StringUtils.isEmpty(fileName)) {
             throw new DetailsNotFoundException("File name must not be empty");
         }
         this.fileName = fileName;
     }
 
-    private static AddressBook populateAddressBook(String line) {
+    private AddressBook populateAddressBook(String line) {
         String[] addressDetail = line.split(",");
         String name = addressDetail[0];
         String gender = addressDetail[1];
@@ -40,14 +40,14 @@ public final class AddressBookReader {
         return new AddressBook(new PersonName(name), getGenderEnum(gender), new DateOfBirth(getDateOfBirth(dob)));
     }
 
-    private static LocalDate getDateOfBirth(String dob) {
+    private LocalDate getDateOfBirth(String dob) {
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-                .appendPattern("dd/MM/")
+                .appendPattern(DATE_FORMAT)
                 .appendValueReduced(ChronoField.YEAR, 2, 2, 1900).toFormatter();
         return LocalDate.parse(dob.trim(), formatter);
     }
 
-    private static Gender getGenderEnum(String gender) {
+    private Gender getGenderEnum(String gender) {
         return "Male".equalsIgnoreCase(gender.trim()) ? Gender.MALE : Gender.FEMALE;
     }
 
@@ -55,7 +55,7 @@ public final class AddressBookReader {
         List<AddressBook> addressBooks;
         Path path = Path.of(ClassLoader.getSystemResource(fileName).toURI());
         try (Stream<String> lines = Files.lines(path)) {
-            addressBooks = lines.map(AddressBookReader::populateAddressBook).collect(Collectors.toList());
+            addressBooks = lines.map(this::populateAddressBook).collect(Collectors.toList());
         }
         return addressBooks;
     }

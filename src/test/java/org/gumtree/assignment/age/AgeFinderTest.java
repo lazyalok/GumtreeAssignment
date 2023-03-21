@@ -22,7 +22,7 @@ public class AgeFinderTest {
     }
 
     @Test
-    public void should_return_oldest_person_in_address_book() throws IOException, URISyntaxException, DetailsNotFoundException {
+    public void should_return_oldest_person_in_address_book() throws IOException, URISyntaxException {
 
         List<AddressBook> addressBooks = addressBookReader.readAddress();
         AgeFinder ageFinder = new AgeFinder();

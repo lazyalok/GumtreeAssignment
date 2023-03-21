@@ -12,7 +12,7 @@ import java.util.Optional;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
-public class AgeFinder {
+public final class AgeFinder {
     public PersonName findOldestPerson(List<AddressBook> addressBooks) {
         Comparator<AddressBook> dobComparator = Comparator.comparing(AddressBook::getDateOfBirth);
         addressBooks.sort(dobComparator);
@@ -38,12 +38,12 @@ public class AgeFinder {
 
         if (firstAddress.isPresent() && secondAddress.isPresent()) {
             AgeFinder ageFinder = new AgeFinder();
-            return Math.abs(ageFinder.findAgeDifference(firstAddress.get(), secondAddress.get()));
+            return Math.abs(ageFinder.calculateDays(firstAddress.get(), secondAddress.get()));
         }
         return -1;
     }
 
-    public Integer findAgeDifference(AddressBook addressBookOne, AddressBook addressBookTwo) {
+    private Integer calculateDays(AddressBook addressBookOne, AddressBook addressBookTwo) {
         return Math.toIntExact(DAYS.between(addressBookOne.getDateOfBirth().getDob(),
                 addressBookTwo.getDateOfBirth().getDob()));
     }

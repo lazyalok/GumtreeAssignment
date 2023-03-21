@@ -38,6 +38,6 @@ public class Main {
     private static void howManyDaysOlderBillThanPaul(List<AddressBook> addressBooks) throws DetailsNotFoundException {
         AgeFinder ageFinder = new AgeFinder();
         Integer daysOlder = ageFinder.howManyDaysOlder(addressBooks, "Bill McKnight", "Paul Robinson");
-        System.out.println("Bill is "+daysOlder+" older than Paul");
+        System.out.println("Bill is "+daysOlder+" days older than Paul");
     }
 }

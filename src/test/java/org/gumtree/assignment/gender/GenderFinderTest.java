@@ -2,7 +2,6 @@ package org.gumtree.assignment.gender;
 
 import org.gumtree.assignment.addressbook.AddressBook;
 import org.gumtree.assignment.addressbook.reader.AddressBookReader;
-import org.gumtree.assignment.age.AgeFinder;
 import org.gumtree.assignment.exception.DetailsNotFoundException;
 import org.junit.Assert;
 import org.junit.Before;
