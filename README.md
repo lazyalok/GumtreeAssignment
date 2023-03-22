@@ -22,3 +22,11 @@ When we Run that class we will get below sysout answers in console.
 I have divided all functionalities in different Finder classes like AgeFinder,GenderFinder etc.
 There is scope for refactoring using some interface and all finders can implement that interface and this will 
 give us flexibility to use some behavioural patterns when code get more complex.
+
+**Refactored code - 22March**
+
+As mentioned earlier, I have refcatored code to implement Finder interface
+
+Now each class GenderFinder, PersonNameFinder, DaysOlderFinder, OldestPersonFinder, DaysOlderFinder all are Finder Type
+
+Now Finder call based on type what we are looking for and will give response.

@@ -1,8 +1,10 @@
 package org.gumtree.assignment.gender;
 
 import org.gumtree.assignment.addressbook.AddressBook;
+import org.gumtree.assignment.find.Finder;
 import org.gumtree.assignment.addressbook.reader.AddressBookReader;
 import org.gumtree.assignment.exception.DetailsNotFoundException;
+import org.gumtree.assignment.response.GenderListResponse;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,20 +24,18 @@ public class GenderFinderTest {
 
     @Test(expected = DetailsNotFoundException.class)
     public void should_throw_DetailsNotFoundException_when_address_book_is_empty() throws DetailsNotFoundException, IOException, URISyntaxException {
-
-        List<AddressBook> addressBooks = addressBookReader.readAddress();
-        GenderFinder genderFinder = new GenderFinder();
-        genderFinder.findMaleGenders(null);
+        Finder genderFinder = new GenderFinder();
+        genderFinder.find(null);
     }
 
     @Test
     public void should_return_all_males_in_list() throws IOException, URISyntaxException, DetailsNotFoundException {
 
         List<AddressBook> addressBooks = addressBookReader.readAddress();
-        GenderFinder genderFinder = new GenderFinder();
-        List<AddressBook> results = genderFinder.findMaleGenders(addressBooks);
+        Finder genderFinder = new GenderFinder();
+        GenderListResponse genderListResponse = (GenderListResponse)genderFinder.find(addressBooks);
 
-        results.forEach(result -> {
+        genderListResponse.getGenders().forEach(result -> {
             Assert.assertEquals(result.getGender(), Gender.MALE);
         });
     }

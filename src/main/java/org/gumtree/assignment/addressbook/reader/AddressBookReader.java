@@ -12,7 +12,6 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.List;
@@ -22,7 +21,7 @@ import java.util.stream.Stream;
 public final class AddressBookReader {
 
     private static final String DATE_FORMAT = "dd/MM/";
-    private String fileName;
+    private final String fileName;
 
     public AddressBookReader(String fileName) throws DetailsNotFoundException {
 
@@ -41,7 +40,7 @@ public final class AddressBookReader {
     }
 
     private LocalDate getDateOfBirth(String dob) {
-        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+        var formatter = new DateTimeFormatterBuilder()
                 .appendPattern(DATE_FORMAT)
                 .appendValueReduced(ChronoField.YEAR, 2, 2, 1900).toFormatter();
         return LocalDate.parse(dob.trim(), formatter);
