@@ -24,7 +24,6 @@ public final class AddressBookReader {
     private final String fileName;
 
     public AddressBookReader(String fileName) throws DetailsNotFoundException {
-
         if (StringUtils.isEmpty(fileName)) {
             throw new DetailsNotFoundException("File name must not be empty");
         }

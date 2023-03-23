@@ -1,4 +1,4 @@
-package org.gumtree.assignment.age;
+package org.gumtree.assignment.find;
 
 import org.gumtree.assignment.addressbook.AddressBook;
 import org.gumtree.assignment.find.Finder;
@@ -13,9 +13,9 @@ import java.util.Optional;
 public final class OldestPersonFinder implements Finder {
     @Override
     public AddressBookResponse find(List<AddressBook> addressBooks) {
-        Comparator<AddressBook> dobComparator = Comparator.comparing(AddressBook::getDateOfBirth);
+        Comparator<AddressBook> dobComparator = Comparator.comparing(AddressBook::dateOfBirth);
         addressBooks.sort(dobComparator);
-        Optional<PersonName> personName = Optional.of(addressBooks.get(0).getPersonName());
+        Optional<PersonName> personName = Optional.of(addressBooks.get(0).personName());
         return new PersonNameResponse(personName.get());
     }
 }

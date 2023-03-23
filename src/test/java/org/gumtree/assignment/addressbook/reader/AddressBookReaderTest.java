@@ -25,7 +25,7 @@ public class AddressBookReaderTest {
         List<AddressBook> addressBooks = addressBookReader.readAddress();
 
         Assert.assertEquals(5, addressBooks.size());
-        Assert.assertEquals("Bill McKnight", addressBooks.get(0).getPersonName().getName());
+        Assert.assertEquals("Bill McKnight", addressBooks.get(0).personName().name());
     }
 
 

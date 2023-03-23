@@ -6,6 +6,6 @@ import org.gumtree.assignment.response.AddressBookResponse;
 
 import java.util.List;
 
-public interface Finder {
+public sealed interface Finder permits GenderFinder, DaysOlderFinder, OldestPersonFinder, PersonFinder {
     AddressBookResponse find(List<AddressBook> addressBooks) throws DetailsNotFoundException;
 }

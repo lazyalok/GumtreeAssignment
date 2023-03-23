@@ -1,4 +1,4 @@
-package org.gumtree.assignment.gender;
+package org.gumtree.assignment.find;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.gumtree.assignment.addressbook.AddressBook;
@@ -13,7 +13,7 @@ import java.util.function.Predicate;
 import static org.gumtree.assignment.gender.Gender.MALE;
 
 public final class GenderFinder implements Finder {
-    private final Predicate<AddressBook> IS_MALE = addressBook -> MALE.equals(addressBook.getGender());
+    private final Predicate<AddressBook> IS_MALE = addressBook -> MALE.equals(addressBook.gender());
 
     @Override
     public AddressBookResponse find(List<AddressBook> addressBooks) throws DetailsNotFoundException {

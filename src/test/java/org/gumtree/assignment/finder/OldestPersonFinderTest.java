@@ -1,9 +1,11 @@
-package org.gumtree.assignment.age;
+package org.gumtree.assignment.finder;
 
 import org.gumtree.assignment.addressbook.AddressBook;
+import org.gumtree.assignment.find.DaysOlderFinder;
 import org.gumtree.assignment.find.Finder;
 import org.gumtree.assignment.addressbook.reader.AddressBookReader;
 import org.gumtree.assignment.exception.DetailsNotFoundException;
+import org.gumtree.assignment.find.OldestPersonFinder;
 import org.gumtree.assignment.response.AgeDiffResponse;
 import org.gumtree.assignment.response.PersonNameResponse;
 import org.junit.Assert;
@@ -29,7 +31,7 @@ public class OldestPersonFinderTest {
         List<AddressBook> addressBooks = addressBookReader.readAddress();
         Finder oldestPersonFinder = new OldestPersonFinder();
         PersonNameResponse oldestPersonName = (PersonNameResponse) oldestPersonFinder.find(addressBooks);
-        Assert.assertEquals("Wes Jackson", oldestPersonName.getPersonName().getName());
+        Assert.assertEquals("Wes Jackson", oldestPersonName.getPersonName().name());
     }
 
     @Test

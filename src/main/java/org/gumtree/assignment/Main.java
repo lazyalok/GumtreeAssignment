@@ -3,10 +3,10 @@ package org.gumtree.assignment;
 import org.gumtree.assignment.addressbook.AddressBook;
 import org.gumtree.assignment.find.Finder;
 import org.gumtree.assignment.addressbook.reader.AddressBookReader;
-import org.gumtree.assignment.age.DaysOlderFinder;
-import org.gumtree.assignment.age.OldestPersonFinder;
+import org.gumtree.assignment.find.DaysOlderFinder;
+import org.gumtree.assignment.find.OldestPersonFinder;
 import org.gumtree.assignment.exception.DetailsNotFoundException;
-import org.gumtree.assignment.gender.GenderFinder;
+import org.gumtree.assignment.find.GenderFinder;
 import org.gumtree.assignment.response.AgeDiffResponse;
 import org.gumtree.assignment.response.GenderListResponse;
 import org.gumtree.assignment.response.PersonNameResponse;
@@ -36,7 +36,7 @@ public class Main {
     private static void whoIsTheOldestPersonInAddressBook(List<AddressBook> addressBooks) throws DetailsNotFoundException {
         Finder oldestPersonFinder = new OldestPersonFinder();
         PersonNameResponse personNameResponse = (PersonNameResponse) oldestPersonFinder.find(addressBooks);
-        System.out.println("Oldest person in given address book list is : " + personNameResponse.getPersonName().getName());
+        System.out.println("Oldest person in given address book list is : " + personNameResponse.getPersonName().name());
     }
 
     private static void howManyDaysOlderBillThanPaul(List<AddressBook> addressBooks) throws DetailsNotFoundException {

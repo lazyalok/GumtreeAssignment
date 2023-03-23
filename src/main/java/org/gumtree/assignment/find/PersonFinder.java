@@ -1,4 +1,4 @@
-package org.gumtree.assignment.name;
+package org.gumtree.assignment.find;
 
 import org.gumtree.assignment.addressbook.AddressBook;
 import org.gumtree.assignment.find.Finder;
@@ -17,7 +17,7 @@ public final class PersonFinder implements Finder {
     }
     @Override
     public AddressBookResponse find(List<AddressBook> addressBooks) throws DetailsNotFoundException {
-        Optional<AddressBook> addressBookResp = addressBooks.stream().filter(addressBook -> addressBook.getPersonName().getName().equalsIgnoreCase(name)).findFirst();
+        Optional<AddressBook> addressBookResp = addressBooks.stream().filter(addressBook -> addressBook.personName().name().equalsIgnoreCase(name)).findFirst();
 
         if(addressBookResp.isEmpty()){
             throw new DetailsNotFoundException("response is empty");

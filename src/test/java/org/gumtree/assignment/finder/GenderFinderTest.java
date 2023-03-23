@@ -1,9 +1,11 @@
-package org.gumtree.assignment.gender;
+package org.gumtree.assignment.finder;
 
 import org.gumtree.assignment.addressbook.AddressBook;
 import org.gumtree.assignment.find.Finder;
 import org.gumtree.assignment.addressbook.reader.AddressBookReader;
 import org.gumtree.assignment.exception.DetailsNotFoundException;
+import org.gumtree.assignment.find.GenderFinder;
+import org.gumtree.assignment.gender.Gender;
 import org.gumtree.assignment.response.GenderListResponse;
 import org.junit.Assert;
 import org.junit.Before;
@@ -36,7 +38,7 @@ public class GenderFinderTest {
         GenderListResponse genderListResponse = (GenderListResponse)genderFinder.find(addressBooks);
 
         genderListResponse.getGenders().forEach(result -> {
-            Assert.assertEquals(result.getGender(), Gender.MALE);
+            Assert.assertEquals(result.gender(), Gender.MALE);
         });
     }
 }
